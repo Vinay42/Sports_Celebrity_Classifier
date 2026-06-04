@@ -6,7 +6,7 @@ The app detects faces, applies wavelet + raw image features, and predicts one of
 
 ## Live Website
 
-- Live Demo: https://your-live-website-link.com
+- Live Demo: https://sports-celebrity-classifier.vercel.app/
 
 ## Supported Classes
 

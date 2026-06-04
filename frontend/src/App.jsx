@@ -109,7 +109,7 @@ export default function App() {
       setMessageType('info');
     } catch {
       setResult(null);
-      showError('Classification failed. Make sure the Flask server is running on port 5000.');
+      showError('server error.');
     } finally {
       setLoading(false);
     }

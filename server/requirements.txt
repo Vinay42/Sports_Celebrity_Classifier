@@ -1,0 +1,8 @@
+Flask
+gunicorn
+numpy
+opencv-python-headless
+PyWavelets
+scikit-learn
+joblib
+python-dotenv
