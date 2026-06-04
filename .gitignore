@@ -1,0 +1,18 @@
+/.idea/
+/.venv/
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+dist/
+
+# dotenv
+.env

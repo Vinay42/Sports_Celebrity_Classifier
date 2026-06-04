@@ -30,6 +30,12 @@ def after_request(response):
     return add_cors_headers(response)
 
 
+@app.route('/', methods=['GET'])
+def index():
+    # simple sanity page so visiting the backend URL shows it's running
+    return "<html><body><h2>Server is running.</h2></body></html>", 200
+
+
 @app.route('/classify_image', methods=['GET', 'POST'])
 def classify_image():
     image_data = request.form['image_data']
