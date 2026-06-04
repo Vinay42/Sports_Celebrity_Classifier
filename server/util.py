@@ -4,6 +4,9 @@ import numpy as np
 import base64
 import cv2
 from wavelet import w2d
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 __class_name_to_number = {}
 __class_number_to_name = {}
@@ -40,13 +43,13 @@ def load_saved_artifacts():
     global __class_name_to_number
     global __class_number_to_name
 
-    with open("./artifacts/class_dictionary.json", "r") as f:
+    with open(os.path.join(BASE_DIR, "artifacts", "class_dictionary.json"), "r") as f:
         __class_name_to_number = json.load(f)
         __class_number_to_name = {v:k for k,v in __class_name_to_number.items()}
 
     global __model
     if __model is None:
-        with open('./artifacts/saved_model.pkl', 'rb') as f:
+        with open(os.path.join(BASE_DIR, "artifacts", "saved_model.pkl"), "rb") as f:
             __model = joblib.load(f)
     print("loading saved artifacts...done")
 
@@ -63,7 +66,14 @@ def get_cv2_image_from_base64_string(b64str):
     return img
 
 def get_cropped_image_if_2_eyes(image_path, image_base64_data):
-    face_cascade = cv2.CascadeClassifier('./opencv/haarcascades/haarcascade_frontalface_default.xml')
+    face_cascade = cv2.CascadeClassifier(
+    os.path.join(
+        BASE_DIR,
+        "opencv",
+        "haarcascades",
+        "haarcascade_frontalface_default.xml"
+    )
+)
     eye_cascade = cv2.CascadeClassifier('./opencv/haarcascades/haarcascade_eye.xml')
     eye_cascade_glasses = cv2.CascadeClassifier('./opencv/haarcascades/haarcascade_eye_tree_eyeglasses.xml')
 
